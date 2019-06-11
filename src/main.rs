@@ -42,7 +42,6 @@ fn execute_chisel() -> Result<String, io::Error> {
             return Ok(result);
         },
         Err(e) => {
-            //println!("{:?}", e);
             if e.kind() == ErrorKind::NotFound {
                 let error = "ERROR: chisel not found, please install chisel.";
                 println!("{}", error);
@@ -94,12 +93,15 @@ fn execute_wasm_snip(params: SnipParams) {
                 println!("OK\n{}", String::from_utf8(output.stdout).expect("Not UTF-8"));
 
             } else {
-                println!("{}", String::from_utf8(output.stderr).expect("Not UTF-8"));
+                println!("ERROR: {}", String::from_utf8(output.stderr).expect("Not UTF-8"));
             }
 
         },
         Err(e) => {
-            println!("{:?}", e);
+            if e.kind() == ErrorKind::NotFound {
+                println!("ERROR: wasm-snip not found, please install wasm-snip");
+
+            }
         }
     }
 }
@@ -123,6 +125,5 @@ fn main() {
 
     println!("Finished");
 
-    //if chisel_result.
 }
 
