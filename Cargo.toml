@@ -5,7 +5,5 @@ authors = ["Jose Hugo De la cruz Romero <jhugodc@gmail.com>"]
 edition = "2018"
 
 [dependencies]
-chisel = "0.4.0"
-wasm-snip = "0.1.5"
 serde = "1.0.80"
 serde_yaml = "0.8.7"
